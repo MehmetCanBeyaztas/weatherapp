@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <title>WeatherApp</title>
+    <style>
+
+        body
+        {
+            
+            height: 100vh;
+            box-sizing: border-box;
+
+        }
+
+        body::before{
+            content: "";
+            background: url(img/body-bg.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:cover;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            opacity: 0.7;
+        }
+       
+        header{
+            background-color: rgba(213, 177, 100, 0.935);
+        }
+
+        img{
+            width: 50%!important;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1rem; 
+            /* margin-bottom: 2rem; */
+            object-fit: cover;
+        } 
+
+
+        
+    </style>
+</head>
+<body>
+    <!-- App Name Start  -->
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1 class="text-center">WeatherApp</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- App Name End -->
+    
+    <section id="selector">
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col text-center">
+                    <select id= "citySelect"class="custom-select my-1 mx-1" id="city" name="city">
+                      <option value="ankara">Ankara</option>
+                      <option value="bursa">Bursa</option>
+                      <option value="istanbul">İstanbul</option>
+                      <option value="izmir">İzmir</option>
+                    </select>
+                    <button id="btnSelect" class="btn btn-primary my-2">Seç</button>
+
+                </div>
+            </div>
+        </div>
+        
+    </section>
+
+
+    <!-- Weather Cards Start -->
+    <main id="weathercards">
+    <div class="container weather">
+        <div  class=" row row-cols-1 row-cols-sm-1 row-cols-lg-6 row-cols-md-3 ">
+        </div>
+    </div>
+    </main>
+    <!-- Weather Cards End -->
+
+    
+    <script src="js/weather.js" >
+
+    </script>
+</body>
+</html>
