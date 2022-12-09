@@ -1,7 +1,6 @@
 document.querySelector("#btnSelect").addEventListener("click",() => {
     let text = document.querySelector("#citySelect").value;
     getCity(text);
-    // console.log(text);
 });
 
 
@@ -16,34 +15,38 @@ function getCity(city){
         const data = JSON.parse(this.responseText);
         document.querySelector(".weather .row").innerHTML = "";
         for (const element of data) {
-        day(element)
+            insertWeatherToHTML(element)
     }
     
     })
 }
 
 
-function day(data){
-    let int;
-    let a = data.max;
-    let b = data.min;
-
-    let avg = (Number(a) + Number(b)) /2 ; 
+function insertWeatherToHTML(data){
+    let pic;
+    let max = data.max;
+    let min = data.min;
+ 
+    let avg = (Number(max) + Number(min)) /2 ;    
     
-    if (avg >=0 && avg < 8){
-
-        int = "https://cdn.pixabay.com/photo/2013/07/12/15/24/snow-149837_960_720.png";
-    }
-    else if (avg >=8 && avg < 13){
-        int = "https://cdn.pixabay.com/photo/2017/01/29/10/56/cloud-2017524_960_720.png";
-    }
-    else if (avg >=13){
-        int = "https://cdn.pixabay.com/photo/2017/01/29/10/49/weather-2017515_960_720.png";
+    
+    switch(true){
+        case avg >=0 && avg < 8:
+            pic = "https://cdn.pixabay.com/photo/2013/07/12/15/24/snow-149837_960_720.png";
+            break;
+        
+        case avg >=8 && avg < 13:
+            pic = "https://cdn.pixabay.com/photo/2017/01/29/10/56/cloud-2017524_960_720.png";
+            break;
+        
+        case (avg >=13):
+            pic = "https://cdn.pixabay.com/photo/2017/01/29/10/49/weather-2017515_960_720.png";
+            break;
     }
     let html = `
         <div class="col mt-2">
             <div class= "card h-100">
-                <img src="${int}" class="card-img-top">
+                <img src="${pic}" class="card-img-top">
                 <div class = "card-body text-center">
                 <h5 class="card-title">${data.max}°C / ${data.min}°C </h5>
                 <p class ="card-text">${data.tarih}</p>
